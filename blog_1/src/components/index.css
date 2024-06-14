@@ -1,0 +1,23 @@
+/* src/components/Index.css */
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   
+  }
+  /* src/components/Index.css */
+.header {
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  }
+  
+  .header .navbar ul li a {
+    color: rgba(255, 255, 255, 0.644); /* Ensure the text is visible against the transparent background */
+    transition: color 0.3s ease; /* Apply the transition effect directly to the links */
+  }
+  
+  .header .navbar ul li a:hover {
+    color: rgb(255, 255, 255); /* Change the color on hover */
+  }
