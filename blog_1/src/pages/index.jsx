@@ -23,7 +23,7 @@ const Index = () => {
     };
   }, []);
 
-  return (
+  return (<>
     <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-[-1]">
       <video
         ref={videoRef}
@@ -34,6 +34,9 @@ const Index = () => {
         <source src="/videos/night1.mp4" type="video/mp4" />
       </video>
     </div>
+    <div className=' mt-[500px] h-[500px] w-full bg-gray-300'>dummy div</div>
+    <div className='h-[500px] w-full bg-cyan-300'>dummy div</div>
+  </>
   );
 };
 
