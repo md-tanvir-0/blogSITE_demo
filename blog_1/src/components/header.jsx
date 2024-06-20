@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './index.css'; // Ensure you have this import if you need additional custom styles
+import './index.css';
 
-const Header = () => {
+const Header = ({ activeSection }) => {
   const [isMobileNavVisible, setMobileNavVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
-    { name: 'Home', link: '/' },
-    { name: 'Posts', link: '/posts' },
-    { name: 'About', link: '/about' },
-    { name: 'Contact', link: '/contact' },
+    { name: 'Home', link: 'home' },
+    { name: 'Posts', link: 'posts' },
+    { name: 'About', link: 'about' },
+    { name: 'Contact', link: 'contact' },
   ];
 
   const toggleMobileNav = () => {
     setMobileNavVisible(!isMobileNavVisible);
+  };
+
+  const handleNavClick = (link) => {
+    const section = document.getElementById(link);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setMobileNavVisible(false);
+    }
   };
 
   useEffect(() => {
@@ -56,9 +64,13 @@ const Header = () => {
           <ul className="flex flex-col md:flex-row md:space-x-5 space-y-2 md:space-y-0">
             {navItems.map((item) => (
               <li key={item.name}>
-                <Link to={item.link} className="text-xl text-white hover:text-gray-300 px-2">
+                <a
+                  href={`#${item.link}`}
+                  className={`text-xl text-white hover:text-gray-300 px-2 ${activeSection === item.link ? 'text-blue-500' : ''}`}
+                  onClick={() => handleNavClick(item.link)}
+                >
                   {item.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

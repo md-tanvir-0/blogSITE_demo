@@ -23,7 +23,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="index-container">
+    <div id="home" className="index-container">
       <video
         ref={videoRef}
         autoPlay

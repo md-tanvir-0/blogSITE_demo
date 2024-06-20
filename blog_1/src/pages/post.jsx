@@ -2,7 +2,7 @@ import React from 'react';
 
 const Post = () => {
   return (
-    <section id="service" className="services py-12 bg-gray-100">
+    <section id="posts" className="services py-12 bg-gray-100">
       <div className="container mx-auto px-4" data-aos="fade-up">
         <div className="section-header text-center mb-12">
           <h2 className="text-3xl font-semibold">Featured Places</h2>
