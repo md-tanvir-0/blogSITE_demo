@@ -59,19 +59,19 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Header activeSection={activeSection} toggleVideo={toggleVideo} isNightVideo={isNightVideo} />
-        <main className="flex-grow">
+        <main className={`flex-grow ${isNightVideo ? 'bg-gradient-to-br from-gray-800 to-black text-white' : 'bg-gradient-to-br from-gray-200 to-gray-200 text-black'}`}>
           <div ref={sectionRefs.home}>
             <Index isNightVideo={isNightVideo} />
           </div>
-          <div className="bg-gradient-to-br from-gray-800 to-black text-white">
+          <div>
             <div ref={sectionRefs.posts}>
-              <Post />
+              <Post isNightVideo={isNightVideo} />
             </div>
             <div ref={sectionRefs.about}>
-              <About />
+              <About isNightVideo={isNightVideo} />
             </div>
             <div ref={sectionRefs.contact}>
-              <Contact />
+              <Contact isNightVideo={isNightVideo} />
             </div>
           </div>
         </main>
