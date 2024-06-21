@@ -77,3 +77,11 @@
 main {
   margin-top: 100vh; /* Adjust this value if necessary */
 }
+/* index.css */
+.index-container {
+  
+  background-color: rgb(39, 38, 38); /* Background color is separate from video */
+}
+
+  
+ 

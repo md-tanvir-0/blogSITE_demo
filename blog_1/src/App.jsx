@@ -10,6 +10,7 @@ import './index.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState('');
+  const [isNightVideo, setIsNightVideo] = useState(true);
 
   const sectionRefs = {
     home: useRef(null),
@@ -50,22 +51,28 @@ function App() {
     };
   }, [sectionRefs]);
 
+  const toggleVideo = () => {
+    setIsNightVideo(prev => !prev);
+  };
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Header activeSection={activeSection} />
+        <Header activeSection={activeSection} toggleVideo={toggleVideo} isNightVideo={isNightVideo} />
         <main className="flex-grow">
           <div ref={sectionRefs.home}>
-            <Index />
+            <Index isNightVideo={isNightVideo} />
           </div>
-          <div ref={sectionRefs.posts}>
-            <Post />
-          </div>
-          <div ref={sectionRefs.about}>
-            <About />
-          </div>
-          <div ref={sectionRefs.contact}>
-            <Contact />
+          <div className="bg-gradient-to-br from-gray-800 to-black text-white">
+            <div ref={sectionRefs.posts}>
+              <Post />
+            </div>
+            <div ref={sectionRefs.about}>
+              <About />
+            </div>
+            <div ref={sectionRefs.contact}>
+              <Contact />
+            </div>
           </div>
         </main>
         <Footer />

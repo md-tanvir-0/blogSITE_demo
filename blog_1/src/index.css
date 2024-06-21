@@ -5,3 +5,9 @@
 html {
     scroll-behavior: smooth;
   }
+  hr {
+    border: none;
+    height: 0.1px;
+    background-color: #4d4d4d;
+    margin: 20px; /* Example margin */
+}

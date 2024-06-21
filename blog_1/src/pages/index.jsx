@@ -1,26 +1,26 @@
-// src/components/index.jsx
 import React, { useRef, useEffect } from 'react';
 import './index.css';
 
-const Index = () => {
+const Index = ({ isNightVideo }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    const handleTimeUpdate = () => {
-      if (video.duration - video.currentTime < 0.2) {
-        video.currentTime = 0;
-        video.play();
-      }
+    const handleCanPlay = () => {
+      video.play();
+      video.removeEventListener('canplay', handleCanPlay);
     };
 
-    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('canplay', handleCanPlay);
+
+    // Load the new video source
+    video.load();
 
     return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('canplay', handleCanPlay);
     };
-  }, []);
+  }, [isNightVideo]);
 
   return (
     <div id="home" className="index-container">
@@ -29,8 +29,9 @@ const Index = () => {
         autoPlay
         muted
         className="video-background"
+        loop  // Add loop attribute here
       >
-        <source src="/videos/night1.mp4" type="video/mp4" />
+        <source src={isNightVideo ? "/videos/night1.mp4" : "/videos/day.mp4"} type="video/mp4" />
       </video>
     </div>
   );
